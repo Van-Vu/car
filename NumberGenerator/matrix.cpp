@@ -10,6 +10,7 @@
 #include <algorithm>
 
 #include "matrix.h"
+#include "functionhelpers.h"
 
 Matrix::Matrix(int initialGridSize, int initDrawSize, float hit, float miss) {
 	gridSize = initialGridSize;
@@ -18,10 +19,9 @@ Matrix::Matrix(int initialGridSize, int initDrawSize, float hit, float miss) {
 	pMiss = miss;
 	predictedMean = 0.;
 	predictedStdDev = 1.;
-	grid.assign(gridSize, 1. / gridSize);
-	randomDrawResult.assign(drawLineSize, 0);
-	pick.reserve(8);
-
+	stdProb = 1. / gridSize;
+	grid.assign(gridSize, stdProb);
+	beforeMoveGrid = grid;
 	probGrid.assign(gridSize, Data());
 }
 
@@ -29,7 +29,15 @@ std::vector<float> Matrix::getGrid() {
 	return grid;
 }
 
-std::vector<int> Matrix::generateRandomResult() {
+void Matrix::retainGrid() {
+	beforeMoveGrid = grid;
+}
+
+void Matrix::resetGrid() {
+	grid.assign(gridSize, stdProb);
+}
+
+std::set<int> Matrix::generateRandomResult() {
 	static int new_value;
 	// https://stackoverflow.com/a/20136256/1284688
 	const int range_from = 1;
@@ -38,33 +46,25 @@ std::vector<int> Matrix::generateRandomResult() {
 	static std::mt19937                        generator(rand_dev());
 	static std::uniform_int_distribution<int>  distr(range_from, range_to);
 
-	for (int i = 0; i < randomDrawResult.size(); ++i) {
-		new_value = distr(generator);
-
-		// not duplicate
-		while (std::find(randomDrawResult.begin(), randomDrawResult.end(), new_value) != randomDrawResult.end()) {
-			new_value = distr(generator);
-		}
-
-		randomDrawResult[i] = new_value;
+	while (randomDrawResult.size() < gridSize) {
+		randomDrawResult.insert(distr(generator));
 	}
-
 	return randomDrawResult;
 }
 
 void Matrix::draw(int &times) {
-	static std::vector<int> randomResult;
+	static std::set<int> randomResult;
 	for (int i = 0; i < times; i++) {
 		randomResult = generateRandomResult();
 		move(randomResult);
 	}
 }
 
-void Matrix::move(std::vector<int> &randomResult) {
+void Matrix::move(std::set<int> &randomResult) {
 	bool isHit;
 
 	for (int i = 0; i < grid.size(); i++) {
-		if (std::find(randomResult.begin(), randomResult.end(), i + 1) != randomResult.end()) {
+		if (randomResult.count(grid[i]) != 0) {
 			isHit = true;
 		}
 		else {
@@ -77,19 +77,23 @@ void Matrix::move(std::vector<int> &randomResult) {
 	grid = normalize(grid);
 }
 
-void Matrix::sense(std::vector<int> &realResult, float pExact, float pBlur) {
+void Matrix::sense(std::set<int> &realResult, float pExact, float pBlur) {
 	int blur = 0;
 
-	sortProbGrid();
+	//sortProbGrid();
 
-	for (int i = 0; i < realResult.size(); i++) {
-		grid[realResult[i] - 1] += pExact;
+	for (int i = 0; i < gridSize; i++) {
+		if (realResult.count(i) != 0) {
+			grid[i] += pBlur;
+		}
+
+		//grid[realResult[i] - 1] += pExact;
 		//grid[getsensePosition(realResult[i] - 2)] += pBlur;
 		//grid[getsensePosition(realResult[i])] += pBlur;
-		grid[probGrid[0].number - 1] += pBlur;
-		grid[probGrid[1].number - 1] += pBlur;
-		grid[probGrid[2].number - 1] += pBlur;
-		grid[probGrid[3].number - 1] += pBlur;
+		//grid[probGrid[0].number - 1] += pBlur;
+		//grid[probGrid[1].number - 1] += pBlur;
+		//grid[probGrid[2].number - 1] += pBlur;
+		//grid[probGrid[3].number - 1] += pBlur;
 	}
 
 	grid = normalize(grid);
@@ -99,43 +103,45 @@ void Matrix::senseAfterPick(float pExact, float pBlur) {
 	sense(pick, pExact, pBlur);
 }
 
-float * Matrix::calculateDiscrepancy(std::vector<int> &realResult) {
-	int blur = 0;
-	std::vector<float> discrepancyGrid(drawLineSize, 0.);
+//float * Matrix::calculateDiff(std::vector<int> &realResult) {
+//	std::vector<float> diffGrid(drawLineSize, 0.);
+//
+//	for (int i = 0; i < realResult.size(); i++) {
+//		diffGrid[i] = std::abs(stdProb - beforeMoveGrid[realResult[i] - 1]);
+//	}
+//	
+//	// Bodom: need to normalize?
+//	//discrepancyGrid = normalize(discrepancyGrid);
+//	
+//	return calculateGaussian(diffGrid);
+//}
 
-	for (int i = 0; i < realResult.size(); i++) {
-		discrepancyGrid[i] = 1. - grid[realResult[i] - 1];
-	}
-	
-	// Bodom: need to normalize?
-	//discrepancyGrid = normalize(discrepancyGrid);
-
-
-	// Bodom: use functionhelper
-	static float gaussian[2];
-
-	float sum = std::accumulate(discrepancyGrid.begin(), discrepancyGrid.end(), 0.0);
-	float mean = sum / discrepancyGrid.size();
-
-	float accum = 0.0;
-	std::for_each(std::begin(discrepancyGrid), std::end(discrepancyGrid), [&](const float d) {
-		accum += (d - mean) * (d - mean);
-	});
-
-	gaussian[0] = mean;
-	gaussian[1] = accum / discrepancyGrid.size();
-	
-	return gaussian;
+float * Matrix::calculateDiff(std::set<int>& realResult)
+{
+	return nullptr;
 }
 
-void Matrix::comparePickValue(std::vector<int> &realResult) {
+float * Matrix::calculateResultGaussian(std::set<int> &realResult) {
+	std::vector<float> resultGrid(drawLineSize, 0.);
+
+	for (auto it: realResult) {
+		resultGrid[it] = grid[it - 1];
+	}
+	
+	return calculateGaussian(resultGrid);
+}
+
+void Matrix::comparePickValue(std::set<int> &realResult) {
 	if (pick.size() > 0) {
 		winners.push_back(0);
+		int number = 0;
 		for (int i = 0; i < pick.size(); i++) {
-			if (std::find(realResult.begin(), realResult.end(), pick[i]) != realResult.end()) {
+			number = *std::next(pick.begin(), i);
+			if (realResult.count(number) != 0) {
 				winners.back() += 1;
 			}
 		}
+		std::cout << winners.back();
 	}
 }
 
@@ -154,15 +160,11 @@ void Matrix::pickNumbers(float *gaussian) {
 	std::sort(probGrid.begin(), probGrid.end(), [](const Data a, const Data b) {return a.probability > b.probability; });
 	//std::sort(probGrid.begin(), probGrid.end());
 	
-	for (int i = 0; i < drawLineSize; i++) {
-		pick.push_back(probGrid[i].number);
+	int count = 0;
+	while (pick.size() < gridSize) {
+		pick.insert(probGrid[count].number);
+		count += 1;
 	}
-
-	//static int new_up = gridSize - 1;
-	//static int new_low = gridSize - drawLineSize - 1;
-	//for (int i = new_up; i > new_low; i--) {
-	//	pick.push_back(probGrid[i].number);
-	//}
 }
 
 void Matrix::sortProbGrid() {
@@ -216,8 +218,8 @@ void Matrix::printProbGrid() {
 }
 
 void Matrix::printPick() {
-	for (int i = 0; i < pick.size(); i++) {
-		std::cout << pick[i]<< " " << "\n";
+	for (auto it: pick) {
+		std::cout << it << " " << "\n";
 	}
 	float total = std::accumulate(winners.begin(), winners.end(), 0.);
 	std::cout << "winner:" << total / winners.size() << "\n";

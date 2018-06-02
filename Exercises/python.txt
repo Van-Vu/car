@@ -1,0 +1,32 @@
+----------- Guassian:
+from math import sqrt, pi
+
+def f3(t):
+    coeff    = 1.0 / sqrt(2 * pi * 0.2)
+    exponent = -(t-5)**2 / (2*0.2)
+    return coeff * np.exp(exponent)
+
+----------- Plot:
+from matplotlib import pyplot as plt
+
+def show_trajectory(self):
+    """
+    Creates a scatter plot of vehicle's trajectory.
+    """
+    # get the x and y coordinates from vehicle's history
+    X = [p[0] for p in self.history]
+    Y = [p[1] for p in self.history]
+    
+    # don't forget to add the CURRENT x and y
+    X.append(self.x)
+    Y.append(self.y)
+    
+    # create scatter AND plot (to connect the dots)
+    plt.scatter(X,Y)
+    plt.plot(X,Y)
+    
+    plt.title("Vehicle (x, y) Trajectory")
+    plt.xlabel("X Position")
+    plt.ylabel("Y Position")
+    plt.axes().set_aspect('equal', 'datalim')
+    plt.show()

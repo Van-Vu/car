@@ -1,5 +1,5 @@
 #pragma once
 #include <vector>
 
-std::vector < std::vector <int> > read_map(std::string);
-std::vector <int> read_line(std::string);
+std::set < std::set<int> > read_map(std::string);
+std::set <int> read_line(std::string);
