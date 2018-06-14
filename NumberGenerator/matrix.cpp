@@ -45,8 +45,9 @@ std::set<int> Matrix::generateRandomResult() {
 	static std::random_device                  rand_dev;
 	static std::mt19937                        generator(rand_dev());
 	static std::uniform_int_distribution<int>  distr(range_from, range_to);
+	randomDrawResult.clear();
 
-	while (randomDrawResult.size() < gridSize) {
+	while (randomDrawResult.size() < drawLineSize) {
 		randomDrawResult.insert(distr(generator));
 	}
 	return randomDrawResult;
@@ -64,7 +65,7 @@ void Matrix::move(std::set<int> &randomResult) {
 	bool isHit;
 
 	for (int i = 0; i < grid.size(); i++) {
-		if (randomResult.count(grid[i]) != 0) {
+		if (randomResult.count(i + 1) != 0) {
 			isHit = true;
 		}
 		else {
@@ -118,14 +119,27 @@ void Matrix::senseAfterPick(float pExact, float pBlur) {
 
 float * Matrix::calculateDiff(std::set<int>& realResult)
 {
-	return nullptr;
+	std::vector<float> diffGrid(drawLineSize, 0.);
+	
+	int count = 0;
+	for (auto it : realResult) {
+		diffGrid[count] = std::abs(stdProb - beforeMoveGrid[it - 1]);
+		count += 1;
+	}
+
+	// Bodom: need to normalize?
+	//discrepancyGrid = normalize(discrepancyGrid);
+		
+	return calculateGaussian(diffGrid);
 }
 
 float * Matrix::calculateResultGaussian(std::set<int> &realResult) {
 	std::vector<float> resultGrid(drawLineSize, 0.);
+	int count = 0;
 
 	for (auto it: realResult) {
-		resultGrid[it] = grid[it - 1];
+		resultGrid[count] = grid[it - 1];
+		count += 1;
 	}
 	
 	return calculateGaussian(resultGrid);
@@ -161,7 +175,7 @@ void Matrix::pickNumbers(float *gaussian) {
 	//std::sort(probGrid.begin(), probGrid.end());
 	
 	int count = 0;
-	while (pick.size() < gridSize) {
+	while (pick.size() < drawLineSize) {
 		pick.insert(probGrid[count].number);
 		count += 1;
 	}

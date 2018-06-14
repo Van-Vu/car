@@ -42,9 +42,9 @@ Helper function for reading in map data
 
 @return - A grid of chars representing a map.
 */
-std::set < std::set <int> > read_map(std::string file_name) {
+std::vector < std::set <int> > read_map(std::string file_name) {
 	std::ifstream infile(file_name);
-	std::set < std::set <int> > map;
+	std::vector < std::set <int> > map;
 	if (infile.is_open()) {
 
 		char color;
@@ -54,7 +54,7 @@ std::set < std::set <int> > read_map(std::string file_name) {
 
 		while (std::getline(infile, line)) {
 			row = read_line(line);
-			map.insert(row);
+			map.push_back(row);
 		}
 	}
 	return map;

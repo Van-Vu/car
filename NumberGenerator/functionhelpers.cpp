@@ -23,8 +23,14 @@ float * calculateGaussian(std::vector<float> &grid) {
 
 float * updateGaussian(float mean1, float var1, float mean2, float var2) {
 	float new_gaussian[2];
-	new_gaussian[0] = float(var2 * mean1 + var1 * mean2) / (var1 + var2);
-	new_gaussian[1] = 1. / (1. / var1 + 1. / var2);
+	if (var1 + var2 == 0) {
+		new_gaussian[0] = 0;
+		new_gaussian[1] = 1;
+	}
+	else {
+		new_gaussian[0] = float(var2 * mean1 + var1 * mean2) / (var1 + var2);
+		new_gaussian[1] = 1. / (1. / var1 + 1. / var2);
+	}
 
 	return new_gaussian;
 }
