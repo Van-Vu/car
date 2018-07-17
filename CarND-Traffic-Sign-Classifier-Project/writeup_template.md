@@ -355,6 +355,7 @@ For the second image
 | 0     				| all other classes 										|
 
 For the third image 
+
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 1         			| Turn right ahead   									| 
@@ -362,8 +363,8 @@ For the third image
 | 1.86314262e-38					| Keep right											|
 | 0	      			| all other classes					 				|
 
-
 For the fourth image 
+
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 0.979         			| No passing for vehicles over 3.5 metric tons   									| 
@@ -373,10 +374,12 @@ For the fourth image
 | 3.22315173e-04				    | Wild animals crossing      							|
 
 For the fifth image 
+
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 1         			| Keep right   									| 
 | 0     				| all other classes 										|
+
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
