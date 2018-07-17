@@ -135,7 +135,7 @@ I used Lenet architecture with following hyperparameters:
 - FC3=200 → 100
 ![alt text][image7]
 - **Test Accuracy** = 0.920
-- **Comment:** more epochs make it worse
+- **Comment:** more epochs make it worse at reach plateau around 40th epoch
 
 ##### Iterative training 3
 - EPOCHS = 100
@@ -148,7 +148,7 @@ I used Lenet architecture with following hyperparameters:
 - FC3=200 → 100
 ![alt text][image5]
 - **Test Accuracy** = 0.947
-- **Comment:** reduce learningrate makes it better but still not reach 95.1
+- **Comment:** reduce learningrate makes it better but still not reach 95.1, plateau aroung 35th
 
 ##### Iterative training 4
 - EPOCHS = 100
@@ -161,7 +161,7 @@ I used Lenet architecture with following hyperparameters:
 - FC3=200 → 100
 ![alt text][image6]
 - **Test Accuracy** = 0.920
-- **Comment:** reduce learningrate more makes it worse
+- **Comment:** reduce learningrate more makes it worse. Increase epoch doesn't seem to work
 
 ##### Iterative training 5
 - EPOCHS = 50
@@ -212,10 +212,10 @@ I used Lenet architecture with following hyperparameters:
 - **Test Accuracy** = 0.951
 - **Comment:** remove one more fully-connected layer doesn't improve
 
-##### Iterative training 9
+##### Iterative training 9 :boom::boom::boom::boom::boom:
 - EPOCHS = 50
 - Learningrate = 0.001
-- Image type: Gray
+- **Image type: Gray**
 - convo1=40
 - convo2= 64
 - FC1=1600 → 1000
@@ -223,7 +223,7 @@ I used Lenet architecture with following hyperparameters:
 - FC3=500 → 200
 ![alt text][image12]
 - **Test Accuracy** = 0.951
-- **Comment:** use Gray image with inherited layers from RBG, test accuracy is 95.1 and **validation accuracy** is the highest **97.6**
+- **Comment:** use **Gray** image with inherited layers from RBG, test accuracy is 95.1 and **validation accuracy** is the highest **97.6**
 
 ##### Iterative training 10
 - EPOCHS = 50
@@ -249,7 +249,7 @@ I used Lenet architecture with following hyperparameters:
 - FC3=500 → 200
 ![alt text][image14]
 - **Test Accuracy** = 0.951
-- **Comment:** increase learningrate a little bit, test accuracy is 95.1 on par with 0.001 but validation accuracy is worse. However the validation accuracy seems to plateau near the end. Lets introduce dropout
+- **Comment:** increase learningrate a little bit, test accuracy is 95.1 on par with 0.001 but validation accuracy is worse. However the validation accuracy seems to plateau around 35th set. **Lets introduce dropout**
 
 ##### Iterative training 12
 - EPOCHS = 50
@@ -263,7 +263,7 @@ I used Lenet architecture with following hyperparameters:
 - FC3=500 → 200
 ![alt text][image15]
 - **Test Accuracy** = 0.941
-- **Comment:** introduce dropout, get worse
+- **Comment:** introduce dropout, get worse and accuracy is unstable
 
 ##### Iterative training 13
 - EPOCHS = 100
@@ -271,13 +271,13 @@ I used Lenet architecture with following hyperparameters:
 - Image type: Gray
 - DROPOUT 0.5
 - convo1=40
-- - convo2= 64
+- convo2= 64
 - FC1=1600 → 1000
 - FC2=1000 → 500
 - FC3=500 → 200
 ![alt text][image16]
 - **Test Accuracy** = 0.932
-- **Comment:** introduce dropout and increase epoch, even worse
+- **Comment:** introduce dropout and increase epoch, even worse. Accuracy still is unstable
 
 ##### Iterative training 14
 - EPOCHS = 200
@@ -292,6 +292,11 @@ I used Lenet architecture with following hyperparameters:
 ![alt text][image17]
 - **Test Accuracy** = 0.949
 - **Comment:** introduce dropout and increase epoch more, not bad but not as good as no dropout
+
+#### Conclusion:
+- Introduce more epochs doesn't mean the network gets better
+- Dropout somehow doesn't seem to work
+- This architect clearly reaches its peak around 95%, in order to increase the accuracy, better image preprocessing could become handy
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
@@ -341,13 +346,13 @@ For the first image, the model is relatively sure that this is a stop sign (prob
 | 2.72396806e-24				    | Road narrows on the right      							|
 
 
-For the second image ... 
+For the second image 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 1         			| Ahead only   									| 
 | 0     				| the rest ... 										|
 
-For the third image ... 
+For the third image 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 1         			| Turn right ahead   									| 
@@ -356,7 +361,7 @@ For the third image ...
 | 0	      			| the rest ...					 				|
 
 
-For the fourth image ... 
+For the fourth image 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 0.979         			| No passing for vehicles over 3.5 metric tons   									| 
@@ -365,7 +370,7 @@ For the fourth image ...
 | 2.46640365e-03	      			| Turn right ahead					 				|
 | 3.22315173e-04				    | Wild animals crossing      							|
 
-For the fifth image ... 
+For the fifth image 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 1         			| Keep right   									| 
