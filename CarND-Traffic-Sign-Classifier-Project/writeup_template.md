@@ -123,6 +123,7 @@ FC1=500 → 300
 FC2=300 → 200
 FC3=200 → 100
 ![alt text][image4]
+Test Accuracy = 0.951
 
 EPOCHS = 100
 Image type: RGB
@@ -133,6 +134,7 @@ FC1=500 → 300
 FC2=300 → 200
 FC3=200 → 100
 ![alt text][image7]
+Test Accuracy = 0.920
 
 EPOCHS = 100
 Image type: RGB
@@ -143,6 +145,7 @@ FC1=500 → 300
 FC2=300 → 200
 FC3=200 → 100
 ![alt text][image5]
+Test Accuracy = 0.947
 
 EPOCHS = 100
 Image type: RGB
@@ -153,7 +156,7 @@ FC1=500 → 300
 FC2=300 → 200
 FC3=200 → 100
 ![alt text][image6]
-
+Test Accuracy = 0.920
 
 EPOCHS = 50
 Image type: RGB
