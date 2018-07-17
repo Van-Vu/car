@@ -36,6 +36,9 @@ The goals / steps of this project are the following:
 [image15]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/50E0005Graycv1_40cv2_64fc1_1000fc2_500fc3_200_dropout.jpg "Test 12"
 [image16]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/100E0005Graycv1_40cv2_64fc1_1000fc2_500fc3_200_dropout.jpg "Test 13"
 [image17]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/200E0005Graycv1_40cv2_64fc1_1000fc2_500fc3_200_dropout.jpg "Test 14"
+[image18]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/random_images.jpg "random image"
+[image19]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/random_images_result.jpg "random image result"
+[image20]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/feature_map.jpg "feature map Convo1"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -161,6 +164,7 @@ FC1=1500 → 1000
 FC2=1000 → 500
 FC3=500 → 200
 ![alt text][image8]
+Test Accuracy = 0.954
 
 EPOCHS = 50
 Image type: RGB
@@ -171,6 +175,7 @@ FC1=1600 → 1000
 FC2=1000 → 500
 FC3=500 → 200
 ![alt text][image9]
+Test Accuracy = 0.950
 
 EPOCHS = 50
 Image type: RGB
@@ -180,6 +185,7 @@ Learningrate = 0.001
 FC1=1600 → 800
 FC2=800 → 200
 ![alt text][image10]
+Test Accuracy = 0.950
 
 EPOCHS = 50
 Learningrate = 0.001
@@ -188,6 +194,7 @@ convo1=40
 convo2= 64
 FC1=1600 → 500
 ![alt text][image11]
+Test Accuracy = 0.951
 
 EPOCHS = 50
 Learningrate = 0.001
@@ -198,6 +205,9 @@ FC1=1600 → 1000
 FC2=1000 → 500
 FC3=500 → 200
 ![alt text][image12]
+Validation Accuracy = 0.976
+Test Accuracy = 0.951
+
 
 EPOCHS = 50
 Learningrate = 0.0001
@@ -208,6 +218,9 @@ FC1=1600 → 1000
 FC2=1000 → 500
 FC3=500 → 200
 ![alt text][image13]
+Test Accuracy = 0.932
+Random accuracy = 0.900
+
 
 EPOCHS = 50
 Learningrate = 0.0005
@@ -218,6 +231,9 @@ FC1=1600 → 1000
 FC2=1000 → 500
 FC3=500 → 200
 ![alt text][image14]
+Test Accuracy = 0.951
+Random accuracy = 0.950
+
 
 EPOCHS = 50
 Learningrate = 0.0005
@@ -229,6 +245,9 @@ FC1=1600 → 1000
 FC2=1000 → 500
 FC3=500 → 200
 ![alt text][image15]
+Test Accuracy = 0.941
+Random accuracy = 0.950
+
 
 EPOCHS = 100
 Learningrate = 0.0005
@@ -240,6 +259,9 @@ FC1=1600 → 1000
 FC2=1000 → 500
 FC3=500 → 200
 ![alt text][image16]
+Test Accuracy = 0.932
+Random accuracy = 0.950
+
 
 EPOCHS = 200
 Learningrate = 0.0005
@@ -251,14 +273,16 @@ FC1=1600 → 1000
 FC2=1000 → 500
 FC3=500 → 200
 ![alt text][image17]
+Test Accuracy = 0.949
+Random accuracy = 0.950
+
 
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* Validation set Accuracy = 0.976
+* Test Accuracy = 0.951
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
@@ -281,25 +305,26 @@ Here is an example of LeNet-5 in action.
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt text][image18]
 
-The first image might be difficult to classify because ...
+The fourth image might be difficult to classify because of the light and blurness of the sign
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+
+![alt text][image19]
 
 Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| Children crossing      		| Children crossing   									| 
+| Ahead only     			| Ahead only 										|
+| Turn right ahead					| Turn right ahead											|
+| Dangerous curve to the right	      		| No passing for vehicle over	3.5 metric tons				 				|
+| Keep right			| Keep right      							|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This lower than the accuracy on the test set of 0.951
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
@@ -321,4 +346,4 @@ For the second image ...
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 
-
+![alt text][image20]
