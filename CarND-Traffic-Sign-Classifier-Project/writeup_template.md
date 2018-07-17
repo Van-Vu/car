@@ -57,11 +57,11 @@ You're reading it! and here is a link to my [project code](https://github.com/ud
 I used the pandas library to calculate summary statistics of the traffic
 signs data set:
 
--Number of training examples = **34799**
--Number of validation examples = **4410**
--Number of testing examples = **12630**
--Image data shape = **(32, 32, 3)**
--Number of classes = **43**
+- Number of training examples = **34799**
+- Number of validation examples = **4410**
+- Number of testing examples = **12630**
+- Image data shape = **(32, 32, 3)**
+- Number of classes = **43**
 
 #### 2. Include an exploratory visualization of the dataset.
 
@@ -75,15 +75,15 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
--As a first step, I decided to convert the images to grayscale because it gives better accuracy from my experiment below, it's also inline with Yan Lecun [paper](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf):"The ConvNet was trained with full supervision on the color images of the GTSRB dataset and reached 98.97% accuracy on the phase 1 test set. After the end of phase 1, additional experiments with grayscale images established a new record accuracy of 99.17%"
+- As a first step, I decided to convert the images to grayscale because it gives better accuracy from my experiment below, it's also inline with Yan Lecun [paper](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf):"The ConvNet was trained with full supervision on the color images of the GTSRB dataset and reached 98.97% accuracy on the phase 1 test set. After the end of phase 1, additional experiments with grayscale images established a new record accuracy of 99.17%"
 It also helps to reduce the training time
 
--Here is an example of a traffic sign image before and after grayscaling then normalized the image data
+- Here is an example of a traffic sign image before and after grayscaling then normalized the image data
 
 ![alt text][image3]
 
--I normalized the image data because it ensures that each pixel has a similar data distribution. This makes convergence faster while training the network
--The formula to normalize is (image_data - image_data.mean())/image_data.std() as recommended from [here](http://cs231n.github.io/neural-networks-2/)
+- I normalized the image data because it ensures that each pixel has a similar data distribution. This makes convergence faster while training the network
+- The formula to normalize is *(image_data - image_data.mean())/image_data.std()* as recommended from [here](http://cs231n.github.io/neural-networks-2/)
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
@@ -111,7 +111,7 @@ I used Lenet architecture with following hyperparameters:
 -AdamOptimizer
 -BATCH_SIZE = 128
 
-##### Iterative training
+##### Iterative training 1
 - EPOCHS = 50
 - Image type: RGB
 - Learningrate = 0.001
@@ -124,6 +124,7 @@ I used Lenet architecture with following hyperparameters:
 - Test Accuracy = 0.951
 - Comment: test accuracy looks good, how about more epochs
 
+##### Iterative training 2
 - EPOCHS = 100
 - Image type: RGB
 - Learningrate = 0.001
@@ -136,6 +137,7 @@ I used Lenet architecture with following hyperparameters:
 - Test Accuracy = 0.920
 - Comment: more epochs make it worse
 
+##### Iterative training 3
 - EPOCHS = 100
 - Image type: RGB
 - Learningrate = 0.005
@@ -148,6 +150,7 @@ I used Lenet architecture with following hyperparameters:
 - Test Accuracy = 0.947
 - Comment: reduce learningrate makes it better but still not reach 95.1
 
+##### Iterative training 4
 - EPOCHS = 100
 - Image type: RGB
 - Learningrate = 0.0001
@@ -160,6 +163,7 @@ I used Lenet architecture with following hyperparameters:
 - Test Accuracy = 0.920
 - Comment: reduce learningrate more makes it worse
 
+##### Iterative training 5
 - EPOCHS = 50
 - Image type: RGB
 - Learningrate = 0.001
@@ -172,6 +176,7 @@ I used Lenet architecture with following hyperparameters:
 - Test Accuracy = 0.954
 - Comment: tweak the 2 convolutional layers bump the test accuracy to 95.4
 
+##### Iterative training 6
 - EPOCHS = 50
 - Image type: RGB
 - Learningrate = 0.001
@@ -184,6 +189,7 @@ I used Lenet architecture with following hyperparameters:
 - Test Accuracy = 0.950
 - Comment: more tweak the 2 convolutional layers makes it worse then before
 
+##### Iterative training 7
 - EPOCHS = 50
 - Image type: RGB
 - convo1=32
@@ -195,6 +201,7 @@ I used Lenet architecture with following hyperparameters:
 - Test Accuracy = 0.950
 - Comment: remove one fully-connected layer doesn't improve
 
+##### Iterative training 8
 - EPOCHS = 50
 - Learningrate = 0.001
 - Image type: RGB
@@ -205,6 +212,7 @@ I used Lenet architecture with following hyperparameters:
 - Test Accuracy = 0.951
 - Comment: remove one more fully-connected layer doesn't improve
 
+##### Iterative training 9
 - EPOCHS = 50
 - Learningrate = 0.001
 - Image type: Gray
@@ -217,6 +225,7 @@ I used Lenet architecture with following hyperparameters:
 - Test Accuracy = 0.951
 - Comment: use Gray image with inherited layers from RBG, test accuracy is 95.1 and validation accuracy is the highest 97.6
 
+##### Iterative training 10
 - EPOCHS = 50
 - Learningrate = 0.0001
 - Image type: Gray
@@ -230,6 +239,7 @@ I used Lenet architecture with following hyperparameters:
 - Random accuracy = 0.900
 - Comment: reduce learningrate, get worse
 
+##### Iterative training 11
 - EPOCHS = 50
 - Learningrate = 0.0005
 - Image type: Gray
@@ -243,6 +253,7 @@ I used Lenet architecture with following hyperparameters:
 - Random accuracy = 0.950
 - Comment: increase learningrate a little bit, test accuracy is 95.1 on par with 0.001 but validation accuracy is worse. However the validation accuracy seems to plateau near the end. Lets introduce dropout
 
+##### Iterative training 12
 - EPOCHS = 50
 - Learningrate = 0.0005
 - Image type: Gray
@@ -257,6 +268,7 @@ I used Lenet architecture with following hyperparameters:
 - Random accuracy = 0.950
 - Comment: introduce dropout, get worse
 
+##### Iterative training 13
 - EPOCHS = 100
 - Learningrate = 0.0005
 - Image type: Gray
@@ -271,6 +283,7 @@ I used Lenet architecture with following hyperparameters:
 - Random accuracy = 0.950
 - Comment: introduce dropout and increase epoch, even worse
 
+##### Iterative training 14
 - EPOCHS = 200
 - Learningrate = 0.0005
 - Image type: Gray
