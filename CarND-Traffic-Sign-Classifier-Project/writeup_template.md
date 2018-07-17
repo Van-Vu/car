@@ -23,7 +23,6 @@
 [image19]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/random_images_result.jpg "random image result"
 [image20]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/feature_map1.jpg "feature map Convo1"
 
-## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
 ---
