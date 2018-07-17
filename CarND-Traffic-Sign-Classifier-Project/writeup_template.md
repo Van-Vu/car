@@ -64,6 +64,8 @@ It also helps to reduce the training time
 - I normalized the image data because it ensures that each pixel has a similar data distribution. This makes convergence faster while training the network
 - The formula to normalize is *(image_data - image_data.mean())/image_data.std()* as recommended from [here](http://cs231n.github.io/neural-networks-2/)
 
+**Notes:** as you can see in the code, I try different type of image conversion: Gray, RGB, HSV, HLS ... a quick conclusion is that Gray & RGB provide the best result
+
 #### 2. Table describing the final model.
 
 My final model consisted of the following layers:
