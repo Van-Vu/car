@@ -121,8 +121,8 @@ I used Lenet architecture with following hyperparameters:
 - FC2=300 → 200
 - FC3=200 → 100
 ![alt text][image4]
-- Test Accuracy = 0.951
-- Comment: test accuracy looks good, how about more epochs
+- **Test Accuracy** = 0.951
+- **Comment:** test accuracy looks good, how about more epochs
 
 ##### Iterative training 2
 - EPOCHS = 100
@@ -134,8 +134,8 @@ I used Lenet architecture with following hyperparameters:
 - FC2=300 → 200
 - FC3=200 → 100
 ![alt text][image7]
-- Test Accuracy = 0.920
-- Comment: more epochs make it worse
+- **Test Accuracy** = 0.920
+- **Comment:** more epochs make it worse
 
 ##### Iterative training 3
 - EPOCHS = 100
@@ -147,8 +147,8 @@ I used Lenet architecture with following hyperparameters:
 - FC2=300 → 200
 - FC3=200 → 100
 ![alt text][image5]
-- Test Accuracy = 0.947
-- Comment: reduce learningrate makes it better but still not reach 95.1
+- **Test Accuracy** = 0.947
+- **Comment:** reduce learningrate makes it better but still not reach 95.1
 
 ##### Iterative training 4
 - EPOCHS = 100
@@ -160,8 +160,8 @@ I used Lenet architecture with following hyperparameters:
 - FC2=300 → 200
 - FC3=200 → 100
 ![alt text][image6]
-- Test Accuracy = 0.920
-- Comment: reduce learningrate more makes it worse
+- **Test Accuracy** = 0.920
+- **Comment:** reduce learningrate more makes it worse
 
 ##### Iterative training 5
 - EPOCHS = 50
@@ -173,8 +173,8 @@ I used Lenet architecture with following hyperparameters:
 - FC2=1000 → 500
 - FC3=500 → 200
 ![alt text][image8]
-- Test Accuracy = 0.954
-- Comment: tweak the 2 convolutional layers bump the test accuracy to 95.4
+- **Test Accuracy** = 0.954
+- **Comment:** tweak the 2 convolutional layers bump the test accuracy to 95.4
 
 ##### Iterative training 6
 - EPOCHS = 50
@@ -186,8 +186,8 @@ I used Lenet architecture with following hyperparameters:
 - FC2=1000 → 500
 - FC3=500 → 200
 ![alt text][image9]
-- Test Accuracy = 0.950
-- Comment: more tweak the 2 convolutional layers makes it worse then before
+- **Test Accuracy** = 0.950
+- **Comment:** more tweak the 2 convolutional layers makes it worse then before
 
 ##### Iterative training 7
 - EPOCHS = 50
@@ -198,8 +198,8 @@ I used Lenet architecture with following hyperparameters:
 - FC1=1600 → 800
 - FC2=800 → 200
 ![alt text][image10]
-- Test Accuracy = 0.950
-- Comment: remove one fully-connected layer doesn't improve
+- **Test Accuracy** = 0.950
+- **Comment:** remove one fully-connected layer doesn't improve
 
 ##### Iterative training 8
 - EPOCHS = 50
@@ -209,8 +209,8 @@ I used Lenet architecture with following hyperparameters:
 - convo2= 64
 - FC1=1600 → 500
 ![alt text][image11]
-- Test Accuracy = 0.951
-- Comment: remove one more fully-connected layer doesn't improve
+- **Test Accuracy** = 0.951
+- **Comment:** remove one more fully-connected layer doesn't improve
 
 ##### Iterative training 9
 - EPOCHS = 50
@@ -222,8 +222,8 @@ I used Lenet architecture with following hyperparameters:
 - FC2=1000 → 500
 - FC3=500 → 200
 ![alt text][image12]
-- Test Accuracy = 0.951
-- Comment: use Gray image with inherited layers from RBG, test accuracy is 95.1 and validation accuracy is the highest 97.6
+- **Test Accuracy** = 0.951
+- **Comment:** use Gray image with inherited layers from RBG, test accuracy is 95.1 and **validation accuracy** is the highest **97.6**
 
 ##### Iterative training 10
 - EPOCHS = 50
@@ -235,9 +235,8 @@ I used Lenet architecture with following hyperparameters:
 - FC2=1000 → 500
 - FC3=500 → 200
 ![alt text][image13]
-- Test Accuracy = 0.932
-- Random accuracy = 0.900
-- Comment: reduce learningrate, get worse
+- **Test Accuracy** = 0.932
+- **Comment:** reduce learningrate, get worse
 
 ##### Iterative training 11
 - EPOCHS = 50
@@ -249,9 +248,8 @@ I used Lenet architecture with following hyperparameters:
 - FC2=1000 → 500
 - FC3=500 → 200
 ![alt text][image14]
-- Test Accuracy = 0.951
-- Random accuracy = 0.950
-- Comment: increase learningrate a little bit, test accuracy is 95.1 on par with 0.001 but validation accuracy is worse. However the validation accuracy seems to plateau near the end. Lets introduce dropout
+- **Test Accuracy** = 0.951
+- **Comment:** increase learningrate a little bit, test accuracy is 95.1 on par with 0.001 but validation accuracy is worse. However the validation accuracy seems to plateau near the end. Lets introduce dropout
 
 ##### Iterative training 12
 - EPOCHS = 50
@@ -264,9 +262,8 @@ I used Lenet architecture with following hyperparameters:
 - FC2=1000 → 500
 - FC3=500 → 200
 ![alt text][image15]
-- Test Accuracy = 0.941
-- Random accuracy = 0.950
-- Comment: introduce dropout, get worse
+- **Test Accuracy** = 0.941
+- **Comment:** introduce dropout, get worse
 
 ##### Iterative training 13
 - EPOCHS = 100
@@ -279,9 +276,8 @@ I used Lenet architecture with following hyperparameters:
 - FC2=1000 → 500
 - FC3=500 → 200
 ![alt text][image16]
-- Test Accuracy = 0.932
-- Random accuracy = 0.950
-- Comment: introduce dropout and increase epoch, even worse
+- **Test Accuracy** = 0.932
+- **Comment:** introduce dropout and increase epoch, even worse
 
 ##### Iterative training 14
 - EPOCHS = 200
@@ -294,9 +290,8 @@ I used Lenet architecture with following hyperparameters:
 - FC2=1000 → 500
 - FC3=500 → 200
 ![alt text][image17]
-- Test Accuracy = 0.949
-- Random accuracy = 0.950
-- Comment: introduce dropout and increase epoch more, not bad but not as good as no dropout
+- **Test Accuracy** = 0.949
+- **Comment:** introduce dropout and increase epoch more, not bad but not as good as no dropout
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
