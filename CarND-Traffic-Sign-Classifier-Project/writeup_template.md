@@ -21,7 +21,7 @@ The goals / steps of this project are the following:
 
 [image1]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/distribution1.jpg "Distribution 1"
 [image2]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/distribution2.jpg "Distribution 2"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
+[image20]: ./examples/grayscale.jpg "Grayscaling"
 [image3]: ./examples/random_noise.jpg "Random Noise"
 [image4]: ./examples/placeholder.png "Traffic Sign 1"
 [image5]: ./examples/placeholder.png "Traffic Sign 2"
@@ -58,9 +58,11 @@ Number of classes = 43
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here is an exploratory visualization of the data set. It is a bar chart showing the data is not evently distributed
 
 ![alt text][image1]
+
+![alt text][image2]
 
 ### Design and Test a Model Architecture
 
