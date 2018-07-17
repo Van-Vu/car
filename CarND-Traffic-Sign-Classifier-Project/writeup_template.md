@@ -22,11 +22,11 @@ The goals / steps of this project are the following:
 [image1]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/distribution1.jpg "Distribution 1"
 [image2]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/distribution2.jpg "Distribution 2"
 [image3]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/GrayScaling.jpg "Grayscaling"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image4]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/50E001RGB.jpg "Test 1"
+[image5]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/100E0005RGB.jpg "Test 2"
+[image6]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/100E0001RGB.jpg "Test 3"
+[image7]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/100E001RGB.jpg "Test 4"
+[image8]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/100E0005RGB.jpg "Test 2"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -74,6 +74,7 @@ Here is an example of a traffic sign image before and after grayscaling then nor
 ![alt text][image3]
 
 I normalized the image data because it ensures that each pixel has a similar data distribution. This makes convergence faster while training the network
+The formula to normalize is (image_data - image_data.mean())/image_data.std() as recommended from [here](http://cs231n.github.io/neural-networks-2/)
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
@@ -101,43 +102,46 @@ I used Lenet architecture with following hyperparameters:
 AdamOptimizer
 BATCH_SIZE = 128
 
-Bodom1: EPOCHS = 50
+EPOCHS = 50
 Image type: RGB
-Convo1: 40
-Convo2: 20
-FC1=500 → 300
-FC2=300 → 200
-FC3=200 → 100
 Learningrate = 0.001
-
-Bodom9: EPOCHS = 100
-Image type: RGB
 Convo1: 40
 Convo2: 20
 FC1=500 → 300
 FC2=300 → 200
 FC3=200 → 100
+![alt text][image4]
+
+EPOCHS = 100
+Image type: RGB
+Learningrate = 0.001
+Convo1: 40
+Convo2: 20
+FC1=500 → 300
+FC2=300 → 200
+FC3=200 → 100
+![alt text][image7]
+
+EPOCHS = 100
+Image type: RGB
 Learningrate = 0.005
-
-Bodom 10:
-EPOCHS = 100
-Image type: RGB
 Convo1: 40
 Convo2: 20
 FC1=500 → 300
 FC2=300 → 200
 FC3=200 → 100
+![alt text][image5]
+
+EPOCHS = 100
+Image type: RGB
 Learningrate = 0.0001
-
-Bodom11:
-EPOCHS = 100
-Image type: RGB
 Convo1: 40
 Convo2: 20
 FC1=500 → 300
 FC2=300 → 200
 FC3=200 → 100
-Learningrate = 0.001
+![alt text][image6]
+
 
 Bodom2: EPOCHS = 50
 Image type: RGB
