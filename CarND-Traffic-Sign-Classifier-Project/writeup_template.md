@@ -80,6 +80,7 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
 As a first step, I decided to convert the images to grayscale because it gives better accuracy from my experiment below, it's also inline with Yan Lecun [paper](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf):"The ConvNet was trained with full supervision on the color images of the GTSRB dataset and reached 98.97% accuracy on the phase 1 test set. After the end of phase 1, additional experiments with grayscale images established a new record accuracy of 99.17%"
+It also helps to reduce the training time
 
 Here is an example of a traffic sign image before and after grayscaling then normalized the image data
 
@@ -114,16 +115,17 @@ I used Lenet architecture with following hyperparameters:
 AdamOptimizer
 BATCH_SIZE = 128
 
-EPOCHS = 50
-Image type: RGB
-Learningrate = 0.001
-Convo1: 40
-Convo2: 20
-FC1=500 → 300
-FC2=300 → 200
-FC3=200 → 100
+- EPOCHS = 50
+- Image type: RGB
+- Learningrate = 0.001
+- Convo1: 40
+- Convo2: 20
+- FC1=500 → 300
+- FC2=300 → 200
+- FC3=200 → 100
 ![alt text][image4]
 Test Accuracy = 0.951
+Comment: test accuracy looks good, how about more epochs
 
 EPOCHS = 100
 Image type: RGB
@@ -135,6 +137,7 @@ FC2=300 → 200
 FC3=200 → 100
 ![alt text][image7]
 Test Accuracy = 0.920
+Comment: more epochs make it worse
 
 EPOCHS = 100
 Image type: RGB
@@ -146,6 +149,7 @@ FC2=300 → 200
 FC3=200 → 100
 ![alt text][image5]
 Test Accuracy = 0.947
+Comment: reduce learningrate makes it better but still not reach 95.1
 
 EPOCHS = 100
 Image type: RGB
@@ -157,6 +161,7 @@ FC2=300 → 200
 FC3=200 → 100
 ![alt text][image6]
 Test Accuracy = 0.920
+Comment: reduce learningrate more makes it worse
 
 EPOCHS = 50
 Image type: RGB
@@ -168,6 +173,7 @@ FC2=1000 → 500
 FC3=500 → 200
 ![alt text][image8]
 Test Accuracy = 0.954
+Comment: tweak the 2 convolutional layers bump the test accuracy to 95.4
 
 EPOCHS = 50
 Image type: RGB
@@ -179,6 +185,7 @@ FC2=1000 → 500
 FC3=500 → 200
 ![alt text][image9]
 Test Accuracy = 0.950
+Comment: more tweak the 2 convolutional layers makes it worse then before
 
 EPOCHS = 50
 Image type: RGB
@@ -189,6 +196,7 @@ FC1=1600 → 800
 FC2=800 → 200
 ![alt text][image10]
 Test Accuracy = 0.950
+Comment: remove one fully-connected layer doesn't improve
 
 EPOCHS = 50
 Learningrate = 0.001
@@ -198,6 +206,7 @@ convo2= 64
 FC1=1600 → 500
 ![alt text][image11]
 Test Accuracy = 0.951
+Comment: remove one more fully-connected layer doesn't improve
 
 EPOCHS = 50
 Learningrate = 0.001
@@ -209,7 +218,7 @@ FC2=1000 → 500
 FC3=500 → 200
 ![alt text][image12]
 Test Accuracy = 0.951
-
+Comment: use Gray image with inherited layers from RBG, test accuracy is 95.1 and validation accuracy is the highest 97.6
 
 EPOCHS = 50
 Learningrate = 0.0001
@@ -222,7 +231,7 @@ FC3=500 → 200
 ![alt text][image13]
 Test Accuracy = 0.932
 Random accuracy = 0.900
-
+Comment: reduce learningrate, get worse
 
 EPOCHS = 50
 Learningrate = 0.0005
@@ -235,7 +244,7 @@ FC3=500 → 200
 ![alt text][image14]
 Test Accuracy = 0.951
 Random accuracy = 0.950
-
+Comment: increase learningrate a little bit, test accuracy is 95.1 on par with 0.001 but validation accuracy is worse. However the validation accuracy seems to plateau near the end. Lets introduce dropout
 
 EPOCHS = 50
 Learningrate = 0.0005
@@ -249,7 +258,7 @@ FC3=500 → 200
 ![alt text][image15]
 Test Accuracy = 0.941
 Random accuracy = 0.950
-
+Comment: introduce dropout, get worse
 
 EPOCHS = 100
 Learningrate = 0.0005
@@ -263,7 +272,7 @@ FC3=500 → 200
 ![alt text][image16]
 Test Accuracy = 0.932
 Random accuracy = 0.950
-
+Comment: introduce dropout and increase epoch, even worse
 
 EPOCHS = 200
 Learningrate = 0.0005
@@ -277,8 +286,7 @@ FC3=500 → 200
 ![alt text][image17]
 Test Accuracy = 0.949
 Random accuracy = 0.950
-
-
+Comment: introduce dropout and increase epoch more, not bad but not as good as no dropout
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
