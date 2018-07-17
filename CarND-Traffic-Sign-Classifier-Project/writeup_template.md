@@ -297,7 +297,7 @@ I used Lenet architecture with following hyperparameters:
 #### Conclusion:
 - Introduce more epochs doesn't mean the network gets better
 - Dropout somehow doesn't seem to work
-- This architect clearly reaches its peak around 95%, in order to increase the accuracy, better image preprocessing could become handy
+- This architect clearly reaches its peak around 95%, in order to increase the accuracy, better image preprocessing (augmenting, generate fake image ...) could be useful
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
@@ -336,7 +336,7 @@ The model was able to correctly guess 4 of the 5 traffic signs, which gives an a
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+For the first image, the model is quite sure that this is a Children crossing sign (probability of 1)
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
@@ -347,14 +347,14 @@ For the first image, the model is relatively sure that this is a stop sign (prob
 | 2.72396806e-24				    | Road narrows on the right      							|
 
 
-For the second image 
+For the second image, the model is really sure that this is a Ahead only sign (probability of 1) and there's no other classification
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 1         			| Ahead only   									| 
 | 0     				| all other classes 										|
 
-For the third image 
+For the third image, the model is quite sure that this is a Children crossing sign (probability of 1) 
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
@@ -363,7 +363,7 @@ For the third image
 | 1.86314262e-38					| Keep right											|
 | 0	      			| all other classes					 				|
 
-For the fourth image 
+For the fourth image, the model is quite sure that this is a 'No passing for vehicles over 3.5 metric tons' sign (probability of 0.979). Other probabilities are not too low. However all of 5 highest prob are incorrect
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
@@ -373,7 +373,7 @@ For the fourth image
 | 2.46640365e-03	      			| Turn right ahead					 				|
 | 3.22315173e-04				    | Wild animals crossing      							|
 
-For the fifth image 
+For the fifth image, the model is really sure that this is a Keep right sign (probability of 1) and there's no other classification 
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
@@ -383,5 +383,10 @@ For the fifth image
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
+
+- I choose to visualize the convolution layer of the image that was incorrectly identify above
+- The model can clearly identify the boundary of the sign
+- One feature is blackout
+- The model has difficulty in identifying the sign symbol at the center, that's why the prediction varies from speed class to vehicle to turning sign
 
 ![alt text][image20]
