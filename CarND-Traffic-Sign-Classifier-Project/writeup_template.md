@@ -26,7 +26,16 @@ The goals / steps of this project are the following:
 [image5]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/100E0005RGB.jpg "Test 2"
 [image6]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/100E0001RGB.jpg "Test 3"
 [image7]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/100E001RGB.jpg "Test 4"
-[image8]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/100E0005RGB.jpg "Test 2"
+[image8]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/50E001RGBcv1_40cv2_60.jpg "Test 5"
+[image9]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/50E001RGBcv1_32cv2_64fc1_1000fc2_500fc3_200.jpg "Test 6"
+[image10]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/50E001RGBcv1_32cv2_64fc1_800fc2_200.jpg "Test 7"
+[image11]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/50E001RGBcv1_40cv2_64fc1_500.jpg "Test 8"
+[image12]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/50E001Graycv1_40cv2_64fc1_1000fc2_500fc3_200.jpg "Test 9"
+[image13]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/50E0001Graycv1_40cv2_64fc1_1000fc2_500fc3_200.jpg "Test 10"
+[image14]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/50E0005Graycv1_40cv2_64fc1_1000fc2_500fc3_200.jpg "Test 11"
+[image15]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/50E0005Graycv1_40cv2_64fc1_1000fc2_500fc3_200_dropout.jpg "Test 12"
+[image16]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/100E0005Graycv1_40cv2_64fc1_1000fc2_500fc3_200_dropout.jpg "Test 13"
+[image17]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/200E0005Graycv1_40cv2_64fc1_1000fc2_500fc3_200_dropout.jpg "Test 14"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -143,56 +152,43 @@ FC3=200 → 100
 ![alt text][image6]
 
 
-Bodom2: EPOCHS = 50
+EPOCHS = 50
 Image type: RGB
+Learningrate = 0.001
 convo1=40
 convo2= 60
 FC1=1500 → 1000
 FC2=1000 → 500
 FC3=500 → 200
-Learningrate = 0.001
+![alt text][image8]
 
-Bodom3: EPOCHS = 50
+EPOCHS = 50
 Image type: RGB
+Learningrate = 0.001
 convo1=32
 convo2= 64
 FC1=1600 → 1000
 FC2=1000 → 500
 FC3=500 → 200
-Learningrate = 0.001
+![alt text][image9]
 
-Bodom4: EPOCHS = 50
+EPOCHS = 50
 Image type: RGB
 convo1=32
 convo2= 64
 Learningrate = 0.001
 FC1=1600 → 800
 FC2=800 → 200
+![alt text][image10]
 
-Bodom5: EPOCHS = 50
+EPOCHS = 50
 Learningrate = 0.001
 Image type: RGB
 convo1=40
 convo2= 64
 FC1=1600 → 500
+![alt text][image11]
 
-Bodom 6: EPOCHS = 100
-Learningrate = 0.001
-Image type: RGB
-convo1=40
-convo2= 64
-FC1=1600 → 500
-
-Bodom7: EPOCHS = 50
-Learningrate = 0.001
-Image type: RGB
-convo1=40
-convo2= 64
-FC1=1600 → 1000
-FC2=1000 → 500
-FC3=500 → 200
-
-Bodom12: 
 EPOCHS = 50
 Learningrate = 0.001
 Image type: Gray
@@ -201,9 +197,8 @@ convo2= 64
 FC1=1600 → 1000
 FC2=1000 → 500
 FC3=500 → 200
+![alt text][image12]
 
-
-Bodom13:
 EPOCHS = 50
 Learningrate = 0.0001
 Image type: Gray
@@ -212,8 +207,8 @@ convo2= 64
 FC1=1600 → 1000
 FC2=1000 → 500
 FC3=500 → 200
+![alt text][image13]
 
-Bodom14:
 EPOCHS = 50
 Learningrate = 0.0005
 Image type: Gray
@@ -222,8 +217,8 @@ convo2= 64
 FC1=1600 → 1000
 FC2=1000 → 500
 FC3=500 → 200
+![alt text][image14]
 
-Bodom15:
 EPOCHS = 50
 Learningrate = 0.0005
 Image type: Gray
@@ -233,8 +228,8 @@ convo2= 64
 FC1=1600 → 1000
 FC2=1000 → 500
 FC3=500 → 200
+![alt text][image15]
 
-Bodom16:
 EPOCHS = 100
 Learningrate = 0.0005
 Image type: Gray
@@ -244,8 +239,8 @@ convo2= 64
 FC1=1600 → 1000
 FC2=1000 → 500
 FC3=500 → 200
+![alt text][image16]
 
-Bodom17:
 EPOCHS = 200
 Learningrate = 0.0005
 Image type: Gray
@@ -255,7 +250,7 @@ convo2= 64
 FC1=1600 → 1000
 FC2=1000 → 500
 FC3=500 → 200
-
+![alt text][image17]
 
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
