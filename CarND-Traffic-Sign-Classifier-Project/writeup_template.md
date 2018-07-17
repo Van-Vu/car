@@ -334,14 +334,42 @@ For the first image, the model is relatively sure that this is a stop sign (prob
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| 1         			| Children crossing   									| 
+| 1.63602217e-22     				| Right-of-way at the next intersection 										|
+| 3.37982091e-23					| End of no passing											|
+| 3.62312691e-24	      			| Beware of ice/snow					 				|
+| 2.72396806e-24				    | Road narrows on the right      							|
 
 
 For the second image ... 
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1         			| Ahead only   									| 
+| 0     				| the rest ... 										|
+
+For the third image ... 
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1         			| Turn right ahead   									| 
+| 3.75329974e-38     				| Speed limit (100km/h) 										|
+| 1.86314262e-38					| Keep right											|
+| 0	      			| the rest ...					 				|
+
+
+For the fourth image ... 
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 0.979         			| No passing for vehicles over 3.5 metric tons   									| 
+| 1.08527457e-02     				| Right-of-way at the next intersection 										|
+| 6.27199840e-03					| Speed limit (80km/h)											|
+| 2.46640365e-03	      			| Turn right ahead					 				|
+| 3.22315173e-04				    | Wild animals crossing      							|
+
+For the fifth image ... 
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1         			| Keep right   									| 
+| 0     				| the rest 										|
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
