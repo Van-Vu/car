@@ -1,22 +1,5 @@
 # **Traffic Sign Recognition** 
 
-## Writeup
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
----
-
-**Build a Traffic Sign Recognition Project**
-
-The goals / steps of this project are the following:
-* Load the data set (see below for links to the project data set)
-* Explore, summarize and visualize the data set
-* Design, train and test a model architecture
-* Use the model to make predictions on new images
-* Analyze the softmax probabilities of the new images
-* Summarize the results with a written report
-
-
 [//]: # (Image References)
 
 [image1]: https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/writeup/distribution1.jpg "Distribution 1"
@@ -46,13 +29,11 @@ The goals / steps of this project are the following:
 ---
 ### Writeup / README
 
-#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
-
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+#### Here is a link to my [project code](https://github.com/Van-Vu/car/blob/master/CarND-Traffic-Sign-Classifier-Project/Traffic_Sign_Classifier_EC2.ipynb)
 
 ### Data Set Summary & Exploration
 
-#### 1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+#### 1. Basic summary of the data set:
 
 I used the pandas library to calculate summary statistics of the traffic
 signs data set:
@@ -63,7 +44,7 @@ signs data set:
 - Image data shape = **(32, 32, 3)**
 - Number of classes = **43**
 
-#### 2. Include an exploratory visualization of the dataset.
+#### 2. Visualization of the dataset.
 
 Here is an exploratory visualization of the data set. It is a bar chart showing the data is unbalanced
 
@@ -73,8 +54,7 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 ### Design and Test a Model Architecture
 
-#### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
-
+#### 1. Pre-preprocessed the image data
 - As a first step, I decided to convert the images to grayscale because it gives better accuracy from my experiment below, it's also inline with Yan Lecun [paper](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf):"The ConvNet was trained with full supervision on the color images of the GTSRB dataset and reached 98.97% accuracy on the phase 1 test set. After the end of phase 1, additional experiments with grayscale images established a new record accuracy of 99.17%"
 It also helps to reduce the training time
 
@@ -85,7 +65,7 @@ It also helps to reduce the training time
 - I normalized the image data because it ensures that each pixel has a similar data distribution. This makes convergence faster while training the network
 - The formula to normalize is *(image_data - image_data.mean())/image_data.std()* as recommended from [here](http://cs231n.github.io/neural-networks-2/)
 
-#### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+#### 2. Table describing the final model.
 
 My final model consisted of the following layers:
 
@@ -105,8 +85,7 @@ My final model consisted of the following layers:
 | Softmax				| logits: 43   									|
 
 
-#### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
-
+#### 3. Iteractive process to train my model:
 I used Lenet architecture with following hyperparameters:
 -AdamOptimizer
 -BATCH_SIZE = 128
@@ -301,13 +280,13 @@ I used Lenet architecture with following hyperparameters:
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
-My final model results were:
+My final model results were in Iterative training 9:
 * Validation set Accuracy = 0.976
 * Test Accuracy = 0.951
 
 ### Test a Model on New Images
 
-#### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+#### 1. Five random German traffic signs found on the web
 
 Here are five German traffic signs that I found on the web:
 
@@ -315,7 +294,7 @@ Here are five German traffic signs that I found on the web:
 
 The fourth image might be difficult to classify because of the light and blurness of the sign
 
-#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+#### 2. The model's predictions on these new traffic signs
 
 ![alt text][image19]
 
@@ -332,8 +311,7 @@ Here are the results of the prediction:
 
 The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This lower than the accuracy on the test set of 0.951
 
-#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
-
+#### 3. 5 softmax probabilities for each prediction
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
 For the first image, the model is quite sure that this is a Children crossing sign (probability of 1)
@@ -381,10 +359,10 @@ For the fifth image, the model is really sure that this is a Keep right sign (pr
 | 0     				| all other classes 										|
 
 
-### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
+### Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 
-- I choose to visualize the convolution layer of the image that was incorrectly identify above
+- I choose to visualize the convolution layer of the fourth image that was incorrectly identify above
 - The model can clearly identify the boundary of the sign
 - One feature is blackout
 - The model has difficulty in identifying the sign symbol at the center, that's why the prediction varies from speed class to vehicle to turning sign
