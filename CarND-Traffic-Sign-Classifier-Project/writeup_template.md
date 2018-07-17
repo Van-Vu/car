@@ -286,21 +286,6 @@ My final model results were:
 * Validation set Accuracy = 0.976
 * Test Accuracy = 0.951
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
-
-If a well known architecture was chosen:
-* What architecture was chosen? Lenet
-* Why did you believe it would be relevant to the traffic sign application?
-LeNet is a 7-level convolutional network designed for handwritten and machine-printed character recognition. It uses convolution to extract spatial image features (in this case the traffic sign) at multiple location. The convolution layers reduce the number of parameters so the fully-connected layers can be used as final classifier without requiring large training set and computational power
-Here is an example of LeNet-5 in action. 
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
-
-
 ### Test a Model on New Images
 
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
