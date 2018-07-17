@@ -208,7 +208,6 @@ FC1=1600 → 1000
 FC2=1000 → 500
 FC3=500 → 200
 ![alt text][image12]
-Validation Accuracy = 0.976
 Test Accuracy = 0.951
 
 
