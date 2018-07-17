@@ -224,6 +224,7 @@ I used Lenet architecture with following hyperparameters:
 ![alt text][image12]
 - **Test Accuracy** = 0.951
 - **Comment:** use **Gray** image with inherited layers from RBG, test accuracy is 95.1 and **validation accuracy** is the highest **97.6**
+:boom::boom::boom::boom::boom: **I choose this model**
 
 ##### Iterative training 10
 - EPOCHS = 50
@@ -347,10 +348,11 @@ For the first image, the model is relatively sure that this is a stop sign (prob
 
 
 For the second image 
+
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 1         			| Ahead only   									| 
-| 0     				| the rest ... 										|
+| 0     				| all other classes 										|
 
 For the third image 
 | Probability         	|     Prediction	        					| 
@@ -358,7 +360,7 @@ For the third image
 | 1         			| Turn right ahead   									| 
 | 3.75329974e-38     				| Speed limit (100km/h) 										|
 | 1.86314262e-38					| Keep right											|
-| 0	      			| the rest ...					 				|
+| 0	      			| all other classes					 				|
 
 
 For the fourth image 
@@ -374,7 +376,7 @@ For the fifth image
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 1         			| Keep right   									| 
-| 0     				| the rest 										|
+| 0     				| all other classes 										|
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
