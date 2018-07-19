@@ -1,0 +1,8 @@
+https://navoshta.com/traffic-signs-classification/
+https://github.com/jeremy-shannon/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.md
+https://github.com/nevinbaiju/Famous-CNN-models/blob/master/Models.ipynb
+https://chatbotslife.com/german-sign-classification-using-deep-learning-neural-networks-98-8-solution-d05656bf51ad
+
+ssh carnd@52.64.40.48
+source activate carnd-term1
+jupyter notebook
