@@ -110,7 +110,7 @@ model = getModel()
 adam = Adam(lr=0.0001)
 model.compile(loss='mse', optimizer=adam)
 history_object = model.fit_generator(train_generator, steps_per_epoch= len(X_train), validation_data=validation_generator,
-                    validation_steps=len(X_valid), epochs=5)
+                    validation_steps=len(X_valid), epochs=2)
 
 model.save('model.h5')
 print('Model saved')

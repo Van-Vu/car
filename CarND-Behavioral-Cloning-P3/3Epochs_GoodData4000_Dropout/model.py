@@ -16,7 +16,7 @@ from keras.regularizers import l2 as l2_reg
 image_paths = []
 measurements = []
 adjusted_angle = 0.2
-data_folder = './Clone/'
+data_folder = './GoodData/'
 image_folder = data_folder + 'IMG/'
 
 with open(data_folder + 'driving_log.csv') as csvfile:
@@ -70,19 +70,19 @@ def preprocess_image(image_path,steering, isTrainImage = True):
 def getModel():
     model = Sequential()
     model.add(Lambda(lambda x: x /255.0 - 0.5, input_shape=(64,64,3)))
-    model.add(Convolution2D(24,(5,5),strides=(2,2),activation="relu",kernel_regularizer=l2_reg(0.0001)))
-    model.add(Convolution2D(36,(5,5),strides=(2,2),activation="relu",kernel_regularizer=l2_reg(0.0001)))
-    model.add(Convolution2D(48,(5,5),strides=(2,2),activation="relu",kernel_regularizer=l2_reg(0.0001)))
-    model.add(Convolution2D(64,(3,3),activation="relu",kernel_regularizer=l2_reg(0.0001)))
-    model.add(Convolution2D(64,(3,3),activation="relu",kernel_regularizer=l2_reg(0.0001)))
+    model.add(Convolution2D(24,(5,5),strides=(2,2),activation="relu",kernel_regularizer=l2_reg(0.001)))
+    model.add(Convolution2D(36,(5,5),strides=(2,2),activation="relu",kernel_regularizer=l2_reg(0.001)))
+    model.add(Convolution2D(48,(5,5),strides=(2,2),activation="relu",kernel_regularizer=l2_reg(0.001)))
+    model.add(Convolution2D(64,(3,3),activation="relu",kernel_regularizer=l2_reg(0.001)))
+    model.add(Convolution2D(64,(3,3),activation="relu",kernel_regularizer=l2_reg(0.001)))
     model.add(Flatten())
-    model.add(Dense(120,kernel_regularizer=l2_reg(0.0001)))
-    #model.add(Dropout(0.5))
-    model.add(Dense(50,kernel_regularizer=l2_reg(0.0001)))
-    #model.add(Dropout(0.5))
-    model.add(Dense(10,kernel_regularizer=l2_reg(0.0001)))
-    #model.add(Dropout(0.5))
-    model.add(Dense(1,kernel_regularizer=l2_reg(0.0001)))
+    model.add(Dense(120,kernel_regularizer=l2_reg(0.001)))
+    model.add(Dropout(0.5))
+    model.add(Dense(50,kernel_regularizer=l2_reg(0.001)))
+    model.add(Dropout(0.5))
+    model.add(Dense(10,kernel_regularizer=l2_reg(0.001)))
+    model.add(Dropout(0.5))
+    model.add(Dense(1,kernel_regularizer=l2_reg(0.001)))
     model.summary()
     return model
 
@@ -110,7 +110,7 @@ model = getModel()
 adam = Adam(lr=0.0001)
 model.compile(loss='mse', optimizer=adam)
 history_object = model.fit_generator(train_generator, steps_per_epoch= len(X_train), validation_data=validation_generator,
-                    validation_steps=len(X_valid), epochs=5)
+                    validation_steps=len(X_valid), epochs=3)
 
 model.save('model.h5')
 print('Model saved')
