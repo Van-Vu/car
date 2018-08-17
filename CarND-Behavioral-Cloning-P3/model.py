@@ -5,7 +5,6 @@ import numpy as np
 import random
 from keras.models import Sequential, Model
 from keras.layers import Activation, Flatten, Dense, Lambda, Cropping2D, Convolution2D, Dropout, Reshape
-from keras import backend as K
 import matplotlib.pyplot as plt
 import sklearn
 from sklearn.model_selection import train_test_split
@@ -48,7 +47,7 @@ def random_flip(image,steering):
 
 def random_brightness(image):
     image1 = cv2.cvtColor(image,cv2.COLOR_RGB2HSV)
-    random_bright = random.uniform(0.3,1.0)    
+    random_bright = np.random.uniform()
     image1[:,:,2] = image1[:,:,2]*random_bright
     image1 = cv2.cvtColor(image1,cv2.COLOR_HSV2RGB)
     return image1
@@ -107,10 +106,10 @@ train_generator = generator(X_train, y_train, True)
 validation_generator = generator(X_valid, y_valid, False)
 
 model = getModel()
-adam = Adam(lr=0.0001)
+adam = Adam(lr=0.001)
 model.compile(loss='mse', optimizer=adam)
 history_object = model.fit_generator(train_generator, steps_per_epoch= len(X_train), validation_data=validation_generator,
-                    validation_steps=len(X_valid), epochs=5)
+                    validation_steps=len(X_valid), epochs=2)
 
 model.save('model.h5')
 print('Model saved')
